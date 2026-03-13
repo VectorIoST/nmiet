@@ -254,6 +254,36 @@
     .modal-inner{padding:36px 18px 28px;}
     footer{font-size:.65rem;}
   }
+
+  /* ── STEP 3 BACKUP DELIVERY METHODS ── */
+  .success-wrap .check{font-size:3.6rem;display:block;margin-bottom:10px;animation:popIn .5s cubic-bezier(.36,2,.6,.8) both;}
+  .success-sub{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--text-dim);letter-spacing:.08em;margin-bottom:18px;}
+  .safety-banner{background:rgba(0,255,157,.06);border:1px solid rgba(0,255,157,.25);padding:12px 16px;margin-bottom:18px;display:flex;align-items:center;gap:12px;text-align:left;}
+  .safety-icon{font-size:1.4rem;flex-shrink:0;}
+  .safety-text{font-family:'Space Mono',monospace;font-size:.61rem;color:var(--green);letter-spacing:.05em;line-height:1.6;}
+  .safety-text strong{color:#fff;}
+  .backup-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;text-align:left;}
+  .backup-cards{display:flex;flex-direction:column;gap:9px;margin-bottom:14px;}
+  .backup-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:12px 14px;display:flex;align-items:center;gap:12px;transition:border-color .2s;}
+  .backup-card.primary{border-color:rgba(0,212,255,.35);background:rgba(0,212,255,.05);}
+  .backup-card-icon{font-size:1.4rem;flex-shrink:0;width:32px;text-align:center;}
+  .backup-card-info{flex:1;text-align:left;}
+  .backup-card-title{font-weight:700;font-size:.95rem;color:#fff;letter-spacing:.03em;}
+  .backup-card-sub{font-family:'Space Mono',monospace;font-size:.57rem;color:var(--text-dim);letter-spacing:.05em;margin-top:2px;}
+  .backup-badge{font-family:'Space Mono',monospace;font-size:.52rem;padding:3px 7px;border-radius:2px;letter-spacing:.1em;text-transform:uppercase;flex-shrink:0;}
+  .badge-blue{background:rgba(0,212,255,.15);color:var(--neon-blue);border:1px solid rgba(0,212,255,.3);}
+  .badge-green{background:rgba(0,255,157,.12);color:var(--green);border:1px solid rgba(0,255,157,.25);}
+  .badge-gold{background:rgba(255,215,0,.12);color:var(--gold);border:1px solid rgba(255,215,0,.25);}
+  .backup-btn{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.09em;padding:8px 14px;border:none;cursor:pointer;text-transform:uppercase;transition:filter .2s,transform .2s;white-space:nowrap;}
+  .backup-btn:hover{filter:brightness(1.12);transform:translateY(-1px);}
+  .backup-btn.blue{background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));color:#fff;}
+  .backup-btn.wa{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;}
+  .backup-btn.copy{background:rgba(123,47,255,.2);border:1px solid rgba(123,47,255,.4);color:#c090ff;}
+  .backup-btn.dl{background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.3);color:var(--gold);}
+  .backup-btn.copied{background:rgba(0,255,157,.15);border:1px solid rgba(0,255,157,.3);color:var(--green);}
+  .ls-notice{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--text-dim);text-align:center;line-height:1.7;padding:10px;border-top:1px solid rgba(255,255,255,.06);margin-top:4px;}
+  .ls-notice button{background:none;border:none;color:var(--neon-blue);cursor:pointer;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.05em;text-decoration:underline;}
+
 </style>
 </head>
 <body>
@@ -591,24 +621,71 @@
       </div>
     </div>
 
-    <!-- ── STEP 3 : Success ── -->
+    <!-- ── STEP 3 : Success + All Backup Methods ── -->
     <div class="modal-step" id="step3">
       <div class="modal-inner">
         <div class="success-wrap">
           <span class="check">🎉</span>
-          <h3>Registration Sent!</h3>
-          <p>Your registration email has been opened.<br>Please <strong style="color:var(--gold)">press Send</strong> in your mail app to complete.</p>
+          <h3>Details Saved!</h3>
+          <p class="success-sub">Saved to browser storage · Now send to the organizer</p>
 
           <div class="success-detail" id="successDetail"></div>
 
-          <div class="mail-note">
-            📧 &nbsp;Email pre-filled to <strong>sandeshshingankar8@gmail.com</strong><br>
-            with all your details + payment info attached.<br><br>
-            If your mail app didn't open, <button onclick="retryMailto()" style="background:none;border:none;color:var(--neon-blue);font-family:'Space Mono',monospace;font-size:.62rem;cursor:pointer;letter-spacing:.06em;text-decoration:underline;">click here to try again</button>.
+          <div class="safety-banner">
+            <div class="safety-icon">🛡️</div>
+            <div class="safety-text">
+              <strong>Nothing is lost.</strong> All details are saved in this browser. Even if you close this window or the email doesn’t send, you can resend any time using the buttons below.
+            </div>
           </div>
 
-          <button onclick="closeModal()" class="btn-next" style="margin-top:20px;background:linear-gradient(135deg,rgba(0,212,255,.2),rgba(123,47,255,.2));border:1px solid rgba(0,212,255,.3);">
-            Close
+          <div class="backup-label">Send to organizer via:</div>
+          <div class="backup-cards">
+            <div class="backup-card primary">
+              <div class="backup-card-icon">📧</div>
+              <div class="backup-card-info">
+                <div class="backup-card-title">Email App</div>
+                <div class="backup-card-sub">Opens Gmail/Outlook with everything pre-filled</div>
+              </div>
+              <span class="backup-badge badge-blue">Recommended</span>
+              <button class="backup-btn blue" onclick="doEmail()" style="margin-left:8px;">Open →</button>
+            </div>
+            <div class="backup-card">
+              <div class="backup-card-icon">💬</div>
+              <div class="backup-card-info">
+                <div class="backup-card-title">WhatsApp</div>
+                <div class="backup-card-sub">Message organizer with all details</div>
+              </div>
+              <span class="backup-badge badge-green">Instant</span>
+              <button class="backup-btn wa" onclick="doWhatsApp()" style="margin-left:8px;">Open →</button>
+            </div>
+            <div class="backup-card">
+              <div class="backup-card-icon">📋</div>
+              <div class="backup-card-info">
+                <div class="backup-card-title">Copy All Details</div>
+                <div class="backup-card-sub">Paste into any chat, email, or notes</div>
+              </div>
+              <button class="backup-btn copy" id="copyBtn" onclick="doCopy()" style="margin-left:auto;">Copy</button>
+            </div>
+            <div class="backup-card">
+              <div class="backup-card-icon">💾</div>
+              <div class="backup-card-info">
+                <div class="backup-card-title">Download .txt Backup</div>
+                <div class="backup-card-sub">Save permanently to your device</div>
+              </div>
+              <span class="backup-badge badge-gold">Offline</span>
+              <button class="backup-btn dl" onclick="doDownload()" style="margin-left:8px;">Save</button>
+            </div>
+          </div>
+
+          <div class="ls-notice">
+            ✓ Auto-saved in browser storage &nbsp;·&nbsp;
+            <button onclick="showSaved()">view saved entries</button>
+            &nbsp;·&nbsp;
+            <button onclick="clearSaved()">clear storage</button>
+          </div>
+
+          <button onclick="closeModal()" style="margin-top:14px;width:100%;padding:11px;background:transparent;border:1px solid rgba(255,255,255,.1);color:var(--text-dim);font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.1em;cursor:pointer;">
+            Close Window
           </button>
         </div>
       </div>
@@ -760,12 +837,48 @@ function goToStep2(){
 
 function goToStep1(){ showStep('step1'); }
 
-// ─────────────────────────────────────────────────────────────────────────────
-//  STEP 2 → SUBMIT → open mailto → STEP 3
-// ─────────────────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
+//  SUBMIT → SAVE LOCALLY → SHOW STEP 3
+// ═══════════════════════════════════════════════════════════════
+const LS_KEY = 'vectorio_registrations';
+const ORGANIZER_WHATSAPP = '918668916936'; // country code + number
+let savedEntry = {};
+
+function buildText(e){
+  return `===========================================
+  VECTOR.IO HACKATHON 2026 — REGISTRATION
+  NMIET Talegaon Dabhade
+===========================================
+
+TEAM DETAILS
+─────────────────────────
+Team Name    : ${e.team}
+Team Size    : ${e.size}
+Leader Name  : ${e.leader}
+Email        : ${e.email}
+Phone        : ${e.phone}
+College      : ${e.college}
+
+Project Idea :
+${e.idea}
+
+─────────────────────────
+PAYMENT DETAILS
+─────────────────────────
+Amount Paid  : ₹249
+UPI ID       : ${UPI_ID}
+UTR / Txn ID : ${e.utr}
+Payment App  : ${e.app}
+Payment Time : ${e.paidAtDisplay}
+Receipt File : ${e.receiptName}
+
+─────────────────────────
+Submitted    : ${e.submittedAt}
+===========================================`;
+}
+
 function submitRegistration(){
   clearErr('err2');
-
   const utr    = document.getElementById('f_utr').value.trim();
   const app    = document.getElementById('f_app').value || 'Not specified';
   const paidAt = document.getElementById('f_paidAt').value;
@@ -778,66 +891,90 @@ function submitRegistration(){
     ? new Date(paidAt).toLocaleString('en-IN',{timeZone:'Asia/Kolkata',dateStyle:'medium',timeStyle:'short'})
     : 'Not specified';
 
-  // ── Build mailto ──────────────────────────────────────────────────────────
-  const subject = `[vector.io Hackathon 2026] Registration – ${formData.team}`;
+  savedEntry = {
+    ...formData, utr, app, paidAtDisplay,
+    receiptName: receiptFile ? receiptFile.name : 'N/A',
+    submittedAt: new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata',dateStyle:'medium',timeStyle:'short'}),
+  };
 
-  const body =
-`===========================================
-  VECTOR.IO HACKATHON 2026 — REGISTRATION
-  NMIET Talegaon Dabhade
-===========================================
+  // Save to localStorage immediately (nothing lost even if mail fails)
+  try {
+    const existing = JSON.parse(localStorage.getItem(LS_KEY) || '[]');
+    existing.push(savedEntry);
+    localStorage.setItem(LS_KEY, JSON.stringify(existing));
+  } catch(e){ console.warn('localStorage unavailable', e); }
 
-TEAM DETAILS
-─────────────────────────
-Team Name     : ${formData.team}
-Team Size     : ${formData.size}
-Leader Name   : ${formData.leader}
-Email         : ${formData.email}
-Phone         : ${formData.phone}
-College       : ${formData.college}
-
-Project Idea  :
-${formData.idea}
-
-─────────────────────────
-PAYMENT DETAILS
-─────────────────────────
-Amount Paid   : ₹249
-UPI ID        : ${UPI_ID}
-UTR / Txn ID  : ${utr}
-Payment App   : ${app}
-Payment Time  : ${paidAtDisplay}
-
-⚠ Payment receipt screenshot is attached
-  to this email as: ${receiptFile ? receiptFile.name : 'N/A'}
-  (Please attach it manually before sending)
-
-─────────────────────────
-Submitted via : vector.io Hackathon website
-===========================================`;
-
-  mailtoStr = `mailto:${ORGANIZER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-  // ── Show success screen ───────────────────────────────────────────────────
+  // Populate success summary
   document.getElementById('successDetail').innerHTML =
-    `<strong>Team</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${formData.team}<br>` +
-    `<strong>Leader</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${formData.leader}<br>` +
-    `<strong>Email</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${formData.email}<br>` +
-    `<strong>Phone</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${formData.phone}<br>` +
-    `<strong>College</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${formData.college}<br>` +
-    `<strong>UTR / Txn</strong> &nbsp;&nbsp; ${utr}<br>` +
-    `<strong>Paid via</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${app}<br>` +
-    `<strong>Amount</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₹249`;
+    `<strong>Team</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${savedEntry.team}<br>`+
+    `<strong>Leader</strong> &nbsp;&nbsp;&nbsp; ${savedEntry.leader}<br>`+
+    `<strong>Email</strong> &nbsp;&nbsp;&nbsp;&nbsp; ${savedEntry.email}<br>`+
+    `<strong>Phone</strong> &nbsp;&nbsp;&nbsp;&nbsp; ${savedEntry.phone}<br>`+
+    `<strong>College</strong> &nbsp;&nbsp;&nbsp;${savedEntry.college}<br>`+
+    `<strong>UTR/Txn</strong> &nbsp;&nbsp;${savedEntry.utr}<br>`+
+    `<strong>Paid via</strong> &nbsp;&nbsp;${savedEntry.app}<br>`+
+    `<strong>Amount</strong> &nbsp;&nbsp;&nbsp; ₹249`;
 
-  // Open mail app
-  window.location.href = mailtoStr;
-
-  // Show step 3 after short delay
-  setTimeout(() => showStep('step3'), 600);
+  showStep('step3');
+  // Auto-attempt email silently
+  setTimeout(doEmail, 400);
 }
 
-function retryMailto(){
-  if(mailtoStr) window.location.href = mailtoStr;
+// ── 4 delivery methods ──────────────────────────────────────────
+function doEmail(){
+  const subject = `[vector.io Hackathon 2026] Registration – ${savedEntry.team}`;
+  const body = buildText(savedEntry) + `\n\n⚠ Please also attach the receipt screenshot: ${savedEntry.receiptName}`;
+  window.location.href = `mailto:${ORGANIZER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function doWhatsApp(){
+  const msg =
+    `*vector.io Hackathon 2026 – Registration*\n\n`+
+    `*Team:* ${savedEntry.team}\n`+
+    `*Leader:* ${savedEntry.leader}\n`+
+    `*Size:* ${savedEntry.size}\n`+
+    `*Email:* ${savedEntry.email}\n`+
+    `*Phone:* ${savedEntry.phone}\n`+
+    `*College:* ${savedEntry.college}\n\n`+
+    `*Idea:* ${savedEntry.idea}\n\n`+
+    `*Payment*\n`+
+    `Amount: ₹249\n`+
+    `UTR / Txn ID: ${savedEntry.utr}\n`+
+    `App: ${savedEntry.app}\n`+
+    `Time: ${savedEntry.paidAtDisplay}\n`+
+    `Receipt: ${savedEntry.receiptName}\n\n`+
+    `_(Please also send receipt screenshot separately)_`;
+  window.open(`https://wa.me/${ORGANIZER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function doCopy(){
+  const text = buildText(savedEntry);
+  const btn = document.getElementById('copyBtn');
+  const finish = () => { btn.textContent='✓ Copied!'; btn.className='backup-btn copied'; setTimeout(()=>{btn.textContent='Copy';btn.className='backup-btn copy';},2500); };
+  navigator.clipboard ? navigator.clipboard.writeText(text).then(finish).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);finish();
+  }) : (()=>{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);finish();})();
+}
+
+function doDownload(){
+  const blob = new Blob([buildText(savedEntry)],{type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `vectorio-reg-${savedEntry.team.replace(/\s+/g,'-')}.txt`;
+  a.click(); URL.revokeObjectURL(a.href);
+}
+
+// ── LocalStorage viewer ─────────────────────────────────────────
+function showSaved(){
+  try{
+    const entries = JSON.parse(localStorage.getItem(LS_KEY)||'[]');
+    if(!entries.length){alert('No saved registrations in this browser.');return;}
+    alert(`Saved Registrations (${entries.length}):\n\n`+entries.map((e,i)=>`[${i+1}] ${e.team} · ${e.leader} · ${e.email} · UTR: ${e.utr} · ${e.submittedAt}`).join('\n'));
+  }catch(e){alert('Could not read local storage.');}
+}
+function clearSaved(){
+  if(!confirm('Clear all locally saved registration data? Cannot be undone.'))return;
+  try{localStorage.removeItem(LS_KEY);alert('Cleared.');}catch(e){}
 }
 </script>
 </body>
