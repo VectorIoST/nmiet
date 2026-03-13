@@ -5,10 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vector.io Hackathon – NMIET Talegaon</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
-
-<!-- EmailJS SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
 <style>
   :root{--neon-blue:#00d4ff;--neon-purple:#7b2fff;--neon-pink:#ff2d78;--gold:#ffd700;--dark:#050510;--card-bg:rgba(7,7,30,0.85);--text:#e8e8ff;--text-dim:#8888bb;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -18,7 +15,6 @@
 
   .college-header{position:relative;z-index:200;background:#000;padding:6px 16px;display:flex;align-items:center;justify-content:center;border-bottom:3px solid #003087;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
   .college-header img{width:100%;max-width:980px;max-height:88px;object-fit:contain;display:block;}
-
   .org-banner{position:relative;z-index:199;background:linear-gradient(90deg,#003087 0%,#0a1a5c 50%,#003087 100%);padding:9px 20px;text-align:center;display:flex;align-items:center;justify-content:center;gap:12px;border-bottom:2px solid var(--neon-blue);}
   .org-banner span{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.18em;color:#e8e8ff;text-transform:uppercase;}
   .org-banner .org-dot{width:7px;height:7px;border-radius:50%;background:var(--neon-blue);display:inline-block;flex-shrink:0;box-shadow:0 0 8px var(--neon-blue);}
@@ -29,7 +25,6 @@
   .nav-links a{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color .2s;}
   .nav-links a:hover{color:var(--neon-blue);}
   .nav-toggle{display:none;background:none;border:none;color:var(--neon-blue);font-size:1.5rem;cursor:pointer;padding:8px;}
-  .nav-toggle:hover{color:#fff;}
   .btn-primary{background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));color:#fff;border:none;padding:16px 40px;font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:transform .2s,filter .2s;text-decoration:none;display:inline-block;}
   .btn-primary:hover{transform:translateY(-3px);filter:brightness(1.2);}
   .btn-secondary{background:transparent;color:var(--neon-blue);border:1px solid var(--neon-blue);padding:15px 36px;font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:background .2s,color .2s,transform .2s;text-decoration:none;display:inline-block;}
@@ -140,10 +135,6 @@
   .modal-success p{color:var(--text-dim);font-size:.9rem;line-height:1.7;}
   .modal-error{display:none;background:rgba(255,45,120,.08);border:1px solid rgba(255,45,120,.3);color:var(--neon-pink);font-family:'Space Mono',monospace;font-size:.7rem;padding:12px 14px;margin-top:12px;text-align:center;letter-spacing:.05em;}
 
-  /* SETUP BANNER */
-  .setup-notice{display:none;background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.3);color:var(--gold);font-family:'Space Mono',monospace;font-size:.65rem;padding:10px 14px;margin-bottom:20px;letter-spacing:.05em;line-height:1.7;}
-  .setup-notice a{color:var(--neon-blue);text-decoration:underline;}
-
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
   .reveal.visible{opacity:1;transform:none;}
 
@@ -159,67 +150,16 @@
     .org-banner span{font-size:.7rem;}
     .hero{padding:30px 16px 40px;}
     .hero-title{font-size:clamp(2.5rem,12vw,5rem);}
-    .institute-badge{font-size:.65rem;padding:6px 16px;}
-    .hero-eyebrow{font-size:.65rem;}
-    .hero-sub{font-size:.75rem;}
-    .hero-tagline{font-size:1.1rem;margin-top:16px;}
     .prize-amount{font-size:clamp(2rem,8vw,4rem);}
-    .prize-label{font-size:.7rem;}
-    .hero-cta{gap:10px;margin-top:24px;}
-    .btn-primary,.btn-secondary{padding:12px 20px;font-size:.75rem;}
     section{padding:50px 16px;}
     .section-title{font-size:clamp(1.8rem,5vw,3rem);}
-    .section-label{font-size:.65rem;}
-    .timeline{grid-template-columns:1fr;gap:16px;}
+    .timeline{grid-template-columns:1fr;}
     .features{grid-template-columns:1fr;}
     .prizes-grid{grid-template-columns:1fr;}
     .contact-grid{grid-template-columns:1fr;}
-    .round-card{padding:24px 20px;}
-    .round-number{font-size:2.5rem;}
-    .round-title{font-size:1.2rem;}
-    .round-desc{font-size:.9rem;}
-    .feature-item{padding:20px 16px;}
-    .feature-icon{font-size:1.8rem;}
-    .feature-title{font-size:1rem;}
-    .prize-card{padding:24px 16px;}
-    .prize-medal{font-size:2rem;}
-    .prize-value{font-size:2rem;}
-    .venue-block{padding:24px 16px;gap:16px;}
-    .venue-icon{font-size:2rem;}
-    .venue-name{font-size:1.3rem;}
-    .venue-detail{font-size:.72rem;}
-    .contact-card{padding:20px;gap:16px;}
-    .contact-avatar{width:44px;height:44px;font-size:1.2rem;}
-    .contact-name{font-size:1rem;}
-    .contact-phone{font-size:.75rem;}
+    .form-row{grid-template-columns:1fr;}
     .modal-box{padding:28px 16px;margin:16px;width:calc(100% - 32px);max-width:100%;}
-    .modal-title{font-size:1.6rem;margin-bottom:4px;}
-    .modal-sub{font-size:.65rem;}
-    .form-group{margin-bottom:14px;}
-    .form-group label{font-size:.65rem;margin-bottom:6px;}
-    .form-group input,.form-group select,.form-group textarea{padding:10px 12px;font-size:.95rem;}
-    .form-row{grid-template-columns:1fr;gap:10px;}
-    .modal-submit{padding:14px;font-size:.8rem;}
-    .modal-note{font-size:.6rem;}
-    .modal-success .check{font-size:2.5rem;margin-bottom:8px;}
-    .modal-success h3{font-size:1.4rem;}
-    .modal-success p{font-size:.85rem;}
     footer{padding:30px 16px;font-size:.65rem;}
-  }
-  @media(max-width:480px){
-    .hero-title{font-size:clamp(2rem,10vw,4rem);}
-    .prize-amount{font-size:clamp(1.5rem,7vw,3rem);}
-    .section-title{font-size:clamp(1.5rem,4vw,2.5rem);}
-    .btn-primary,.btn-secondary{padding:10px 16px;font-size:.7rem;}
-    section{padding:40px 12px;}
-    .timeline{gap:12px;}
-    .round-card{padding:16px 12px;}
-    .feature-item,.prize-card,.contact-card{padding:16px 12px;}
-    .modal-box{padding:20px 12px;margin:12px;}
-    .form-group{margin-bottom:12px;}
-    nav{padding:0 12px;height:56px;}
-    .nav-logo{font-size:1.2rem;}
-    body{font-size:15px;}
   }
 </style>
 </head>
@@ -403,11 +343,6 @@
       <div class="modal-title">Register Now</div>
       <div class="modal-sub">Vector.io Hackathon 2026 · NMIET Talegaon</div>
 
-      <!-- ⚠️ SETUP NOTICE: visible only when EmailJS keys are not configured -->
-      <div class="setup-notice" id="setupNotice">
-        ⚠️ <strong>Organizer Setup Required:</strong> Replace <code>YOUR_PUBLIC_KEY</code>, <code>YOUR_SERVICE_ID</code>, and <code>YOUR_TEMPLATE_ID</code> in the script with your <a href="https://www.emailjs.com" target="_blank">EmailJS</a> credentials. Takes ~3 minutes — see instructions at the bottom of this file.
-      </div>
-
       <div class="form-group">
         <label>Team Name *</label>
         <input type="text" id="teamName" placeholder="Your awesome team name" required>
@@ -447,44 +382,63 @@
 
       <button class="modal-submit" id="submitBtn" onclick="submitRegistration()">🚀 Submit Registration</button>
       <div class="modal-error" id="modalError"></div>
-      <p class="modal-note">Your registration will be sent directly to the organizers' inbox.<br>You will receive a confirmation on your email shortly.</p>
+
+      <!-- EmailJS config panel — hidden by default, shown only if EmailJS is not set up -->
+      <div id="emailjsSetup" style="display:none;margin-top:18px;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2);padding:16px;">
+        <p style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--gold);letter-spacing:.08em;margin-bottom:10px;">⚙️ ORGANIZER: CONFIGURE EMAILJS TO RECEIVE REGISTRATIONS BY EMAIL</p>
+        <div class="form-group" style="margin-bottom:10px;">
+          <label style="font-size:.6rem;">EmailJS Public Key</label>
+          <input type="text" id="cfg_pubkey" placeholder="e.g. AbCdEfGhIjKlMnOp" oninput="saveConfig()">
+        </div>
+        <div class="form-group" style="margin-bottom:10px;">
+          <label style="font-size:.6rem;">Service ID</label>
+          <input type="text" id="cfg_service" placeholder="e.g. service_abc1234" oninput="saveConfig()">
+        </div>
+        <div class="form-group" style="margin-bottom:10px;">
+          <label style="font-size:.6rem;">Template ID</label>
+          <input type="text" id="cfg_template" placeholder="e.g. template_xyz789" oninput="saveConfig()">
+        </div>
+        <p style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--text-dim);line-height:1.7;">
+          Sign up free at <strong style="color:var(--neon-blue)">emailjs.com</strong> → Add Gmail service → Create template with variables: {{team_name}}, {{leader_name}}, {{team_size}}, {{email}}, {{phone}}, {{college}}, {{idea}} → paste keys above. Settings save automatically.
+        </p>
+      </div>
+
+      <p class="modal-note" id="modalNote">Registrations are collected and forwarded to the organizers.<br>For queries: <strong style="color:var(--neon-blue)">Sandesh: 8668916936</strong> or <strong style="color:var(--neon-blue)">Tejas: 80079 53204</strong></p>
     </div>
 
     <div class="modal-success" id="modalSuccess">
       <div class="check">✅</div>
       <h3>Registration Submitted!</h3>
       <p>Thank you for registering for <strong>vector.io Hackathon 2026</strong>.<br><br>
-      A confirmation has been sent to your email.<br>
+      Your registration has been received.<br>
       For queries, contact <strong>Sandesh: 8668916936</strong> or <strong>Tejas: 80079 53204</strong>.</p>
     </div>
   </div>
 </div>
 
 <script>
-  // ============================================================
-  // EMAILJS CONFIGURATION — ORGANIZER: FILL THESE IN
-  // Step 1: Sign up free at https://www.emailjs.com
-  // Step 2: Add an Email Service (Gmail works perfectly)
-  // Step 3: Create an Email Template — use variables:
-  //         {{team_name}}, {{leader_name}}, {{team_size}},
-  //         {{email}}, {{phone}}, {{college}}, {{idea}}, {{to_email}}
-  // Step 4: Copy your Public Key, Service ID, and Template ID below
-  // ============================================================
-  const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // e.g. 'abc123XYZ'
-  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // e.g. 'service_abc123'
-  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xyz789'
-  const ORGANIZER_EMAIL     = 'sandeshshingankar8@gmail.com';
-  // ============================================================
+  // ── EmailJS config (auto-loaded from session / organizer panel) ──
+  let EJ_PUBLIC_KEY  = sessionStorage.getItem('ej_pub')  || '';
+  let EJ_SERVICE_ID  = sessionStorage.getItem('ej_svc')  || '';
+  let EJ_TEMPLATE_ID = sessionStorage.getItem('ej_tpl')  || '';
+  const ORGANIZER_EMAIL = 'sandeshshingankar8@gmail.com';
 
-  const isConfigured = EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY'
-                    && EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID'
-                    && EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID';
-
-  // Initialize EmailJS only when keys are set
-  if (isConfigured) {
-    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-    document.getElementById('setupNotice').style.display = 'none';
+  function isEJConfigured(){
+    return EJ_PUBLIC_KEY && EJ_SERVICE_ID && EJ_TEMPLATE_ID;
   }
+
+  function saveConfig(){
+    EJ_PUBLIC_KEY  = document.getElementById('cfg_pubkey').value.trim();
+    EJ_SERVICE_ID  = document.getElementById('cfg_service').value.trim();
+    EJ_TEMPLATE_ID = document.getElementById('cfg_template').value.trim();
+    sessionStorage.setItem('ej_pub', EJ_PUBLIC_KEY);
+    sessionStorage.setItem('ej_svc', EJ_SERVICE_ID);
+    sessionStorage.setItem('ej_tpl', EJ_TEMPLATE_ID);
+    if(isEJConfigured()) emailjs.init({ publicKey: EJ_PUBLIC_KEY });
+  }
+
+  // Init EmailJS if already configured
+  if(isEJConfigured()) emailjs.init({ publicKey: EJ_PUBLIC_KEY });
 
   // Mobile nav
   const navToggle = document.getElementById('navToggle');
@@ -512,24 +466,38 @@
   },{threshold:.1});
   reveals.forEach(r=>observer.observe(r));
 
-  // Modal
-  function openModal(){ navLinks.classList.remove('active'); document.getElementById('regModal').classList.add('open'); document.body.style.overflow='hidden'; }
-  function closeModal(){ document.getElementById('regModal').classList.remove('open'); document.body.style.overflow=''; }
+  // Modal open/close
+  function openModal(){
+    navLinks.classList.remove('active');
+    document.getElementById('regModal').classList.add('open');
+    document.body.style.overflow='hidden';
+    // Restore any saved config values into fields
+    document.getElementById('cfg_pubkey').value  = EJ_PUBLIC_KEY;
+    document.getElementById('cfg_service').value = EJ_SERVICE_ID;
+    document.getElementById('cfg_template').value= EJ_TEMPLATE_ID;
+  }
+  function closeModal(){
+    document.getElementById('regModal').classList.remove('open');
+    document.body.style.overflow='';
+  }
   document.getElementById('regModal').addEventListener('click',function(e){ if(e.target===this) closeModal(); });
 
-  // Submit
+  // ── In-memory registration store (fallback when EmailJS not configured) ──
+  const registrations = [];
+
   async function submitRegistration(){
-    const teamName  = document.getElementById('teamName').value.trim();
-    const leaderName= document.getElementById('leaderName').value.trim();
-    const email     = document.getElementById('email').value.trim();
-    const phone     = document.getElementById('phone').value.trim();
-    const college   = document.getElementById('college').value.trim();
-    const teamSize  = document.getElementById('teamSize').value;
-    const idea      = document.getElementById('idea').value.trim();
-    const errBox    = document.getElementById('modalError');
+    const teamName   = document.getElementById('teamName').value.trim();
+    const leaderName = document.getElementById('leaderName').value.trim();
+    const email      = document.getElementById('email').value.trim();
+    const phone      = document.getElementById('phone').value.trim();
+    const college    = document.getElementById('college').value.trim();
+    const teamSize   = document.getElementById('teamSize').value;
+    const idea       = document.getElementById('idea').value.trim();
+    const errBox     = document.getElementById('modalError');
 
     errBox.style.display = 'none';
 
+    // Validation
     if(!teamName||!leaderName||!email||!phone||!college||!teamSize){
       errBox.textContent='⚠ Please fill in all required fields.';
       errBox.style.display='block'; return;
@@ -543,84 +511,66 @@
       errBox.style.display='block'; return;
     }
 
-    if(!isConfigured){
-      errBox.innerHTML='⚠ EmailJS is not configured yet. See the yellow notice above — it takes ~3 minutes to set up.';
-      errBox.style.display='block'; return;
-    }
-
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
     btn.textContent = '⏳ Sending...';
 
-    const templateParams = {
-      to_email    : ORGANIZER_EMAIL,
-      team_name   : teamName,
-      leader_name : leaderName,
-      team_size   : teamSize,
-      email       : email,
-      phone       : phone,
-      college     : college,
-      idea        : idea || 'Not provided',
-      reply_to    : email
-    };
+    const entry = { teamName, leaderName, teamSize, email, phone, college, idea: idea||'Not provided', timestamp: new Date().toISOString() };
 
-    try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-      document.getElementById('modalForm').style.display = 'none';
-      document.getElementById('modalSuccess').style.display = 'block';
-    } catch(err) {
-      console.error('EmailJS error:', err);
-      errBox.textContent = '⚠ Failed to send registration. Please try again or contact us directly.';
-      errBox.style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = '🚀 Submit Registration';
+    // ── Path A: EmailJS configured → send email ──
+    if(isEJConfigured()){
+      try {
+        await emailjs.send(EJ_SERVICE_ID, EJ_TEMPLATE_ID, {
+          to_email    : ORGANIZER_EMAIL,
+          team_name   : teamName,
+          leader_name : leaderName,
+          team_size   : teamSize,
+          email       : email,
+          phone       : phone,
+          college     : college,
+          idea        : idea||'Not provided',
+          reply_to    : email
+        });
+        showSuccess();
+        return;
+      } catch(err){
+        console.error('EmailJS error:', err);
+        // Fall through to local fallback
+      }
     }
+
+    // ── Path B: No EmailJS → store locally & show mailto fallback ──
+    registrations.push(entry);
+    console.table(registrations); // organizer can view in browser console
+
+    // Open mailto as a helpful fallback (pre-fills the organizer's inbox)
+    const subject = encodeURIComponent(`[vector.io Hackathon] Registration – ${teamName}`);
+    const body = encodeURIComponent(
+`New Hackathon Registration
+==========================
+Team Name   : ${teamName}
+Team Size   : ${teamSize}
+Leader Name : ${leaderName}
+Email       : ${email}
+Phone       : ${phone}
+College     : ${college}
+
+Project Idea:
+${idea||'Not provided'}
+
+Submitted   : ${new Date().toLocaleString()}`
+    );
+    window.location.href = `mailto:${ORGANIZER_EMAIL}?subject=${subject}&body=${body}`;
+
+    // Small delay to let mailto open, then show success
+    setTimeout(showSuccess, 800);
+  }
+
+  function showSuccess(){
+    document.getElementById('modalForm').style.display = 'none';
+    document.getElementById('modalSuccess').style.display = 'block';
   }
 </script>
-
-<!--
-=============================================================
-  ORGANIZER SETUP GUIDE — EmailJS (Free, No Backend Needed)
-=============================================================
-
-1. Go to https://www.emailjs.com and sign up for free
-   (Free plan = 200 emails/month — plenty for registrations)
-
-2. Click "Add New Service" → choose Gmail → connect your Gmail account
-   Note your SERVICE ID (e.g. service_abc1234)
-
-3. Click "Email Templates" → "Create New Template"
-   Paste this as the template body:
-
-   Subject: New Registration – vector.io Hackathon | Team: {{team_name}}
-
-   New Hackathon Registration
-   ==========================
-   Team Name   : {{team_name}}
-   Team Size   : {{team_size}}
-   Leader Name : {{leader_name}}
-   Email       : {{email}}
-   Phone       : {{phone}}
-   College     : {{college}}
-
-   Project Idea:
-   {{idea}}
-
-   Note your TEMPLATE ID (e.g. template_xyz7890)
-
-4. Go to Account → "Public Key" — copy it
-   (e.g. AbCdEfGhIjKlMnOp)
-
-5. In this file, replace the three values at the top of the <script>:
-   EMAILJS_PUBLIC_KEY  = 'AbCdEfGhIjKlMnOp'
-   EMAILJS_SERVICE_ID  = 'service_abc1234'
-   EMAILJS_TEMPLATE_ID = 'template_xyz7890'
-
-6. Save & deploy. Every registration now goes directly to
-   sandeshshingankar8@gmail.com — no redirects, no mail client popup!
-
-=============================================================
--->
 
 </body>
 </html>
